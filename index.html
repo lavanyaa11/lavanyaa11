@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clicker Game</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #f4f4f4;
+            margin: 50px;
+        }
+        .container {
+            max-width: 500px;
+            margin: auto;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .click-button {
+            background: #28a745;
+            color: white;
+            font-size: 20px;
+            padding: 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+        .click-button:hover {
+            background: #218838;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Clicker Game</h1>
+        <p>Clicks: <span id="counter">0</span></p>
+        <button class="click-button" onclick="incrementCounter()">Click Me!</button>
+        <h2>High Score: <span id="highscore">0</span></h2>
+    </div>
+
+    <script>
+        let counter = 0;
+        let highScore = localStorage.getItem("highScore") || 0;
+        document.getElementById("highscore").innerText = highScore;
+
+        function incrementCounter() {
+            counter++;
+            document.getElementById("counter").innerText = counter;
+
+            if (counter > highScore) {
+                highScore = counter;
+                localStorage.setItem("highScore", highScore);
+                document.getElementById("highscore").innerText = highScore;
+            }
+        }
+    </script>
+</body>
+</html>
